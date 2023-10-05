@@ -1,4 +1,4 @@
-package nl.multicode;
+package nl.multicode.group;
 
 
 import java.util.*;
