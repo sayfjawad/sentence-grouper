@@ -1,14 +1,16 @@
-package nl.multicode;
+package nl.multicode.search;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import nl.multicode.search.KjeldSimilarSentenceSearch;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class MainApp {
+class KjeldSimilarSentenceSearchTest {
 
-    public static void main(String[] args) {
-
+    @Test
+    void testAlbertHein() {
         KjeldSimilarSentenceSearch autoGrouper = new KjeldSimilarSentenceSearch();
 
         String searchSentence = "Albert Heijn";
@@ -24,6 +26,8 @@ public class MainApp {
         int threshold = 3;
         List<String> similarSentences = autoGrouper.findSimilarSentences(searchSentence, sentences, threshold);
 
-        System.out.println("Similar sentences: " + similarSentences);
+        assertThat(similarSentences).contains("Albört H ijn")
+                .contains("Alber Heijn");
     }
+
 }
