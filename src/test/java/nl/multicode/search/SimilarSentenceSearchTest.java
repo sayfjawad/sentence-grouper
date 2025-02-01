@@ -39,7 +39,8 @@ class SimilarSentenceSearchTest {
         int threshold = 3;
         List<String> similarSentences = similarSentenceSearch.findSimilarSentences(searchSentence, sentences, threshold);
 
-        assertThat(similarSentences).contains("Albört H ijn")
+        assertThat(similarSentences)
+                .contains("Albört H ijn")
                 .contains("Alber Heijn");
     }
 
