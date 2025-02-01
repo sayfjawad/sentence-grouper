@@ -3,13 +3,13 @@ package nl.multicode;
 import java.util.Arrays;
 import java.util.List;
 
-import nl.multicode.search.KjeldSimilarSentenceSearch;
+import nl.multicode.search.SimilarSentenceSearch;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        KjeldSimilarSentenceSearch autoGrouper = new KjeldSimilarSentenceSearch();
+        SimilarSentenceSearch autoGrouper = new SimilarSentenceSearch();
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(
