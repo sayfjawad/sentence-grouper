@@ -76,17 +76,15 @@ public class SimilarSentenceSearch {
         if (currentRow > firstString.length()) {
             return distanceMatrix; // Base case: stop recursion
         }
-
         if (currentColumn > secondString.length()) {
             return fillDistanceMatrixFunctionally(firstString, secondString, distanceMatrix, currentRow + 1, 1); // Move to next row
         }
 
-        int substitutionCost = firstString.charAt(currentRow - 1) == secondString.charAt(currentColumn - 1) ? 0 : 1;
-        distanceMatrix[currentRow][currentColumn] = min(
-                distanceMatrix[currentRow - 1][currentColumn - 1] + substitutionCost, // substitution
-                distanceMatrix[currentRow - 1][currentColumn] + 1, // deletion
-                distanceMatrix[currentRow][currentColumn - 1] + 1  // insertion
-        );
+        final int substitutionCost = firstString.charAt(currentRow - 1) == secondString.charAt(currentColumn - 1) ? 0 : 1;
+        final int substitutionDistance = distanceMatrix[currentRow - 1][currentColumn - 1] + substitutionCost;
+        final int deletionCost = distanceMatrix[currentRow - 1][currentColumn] + 1;
+        final int insertionCost = distanceMatrix[currentRow][currentColumn - 1] + 1;
+        distanceMatrix[currentRow][currentColumn] = min(substitutionDistance, deletionCost, insertionCost);
 
         return fillDistanceMatrixFunctionally(firstString, secondString, distanceMatrix, currentRow, currentColumn + 1); // Move to next column
     }
@@ -94,12 +92,12 @@ public class SimilarSentenceSearch {
     /**
      * Helper method to find the minimum of three integers.
      *
-     * @param a The first integer.
-     * @param b The second integer.
-     * @param c The third integer.
+     * @param substitutionDistance The first integer.
+     * @param deletionCost The second integer.
+     * @param insertionCost The third integer.
      * @return The minimum of the three integers.
      */
-    private int min(final int a, final int b, final int c) {
-        return Math.min(a, Math.min(b, c));
+    private int min(final int substitutionDistance, final int deletionCost, final int insertionCost) {
+        return Math.min(substitutionDistance, Math.min(deletionCost, insertionCost));
     }
 }
