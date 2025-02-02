@@ -3,7 +3,7 @@ package nl.multicode.search;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SimilarSentenceSearch {
+public class LevenshteinSimilaritySearch {
 
     /**
      * Finds sentences in the list that are very close to the search sentence.

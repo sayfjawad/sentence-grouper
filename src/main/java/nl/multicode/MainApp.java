@@ -3,13 +3,13 @@ package nl.multicode;
 import java.util.Arrays;
 import java.util.List;
 
-import nl.multicode.search.SimilarSentenceSearch;
+import nl.multicode.search.LevenshteinSimilaritySearch;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        SimilarSentenceSearch autoGrouper = new SimilarSentenceSearch();
+        LevenshteinSimilaritySearch autoGrouper = new LevenshteinSimilaritySearch();
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(

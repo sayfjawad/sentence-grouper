@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SimilarSentenceSearchTest {
+class BaulieuXIIISimilaritySearchTest {
 
     /**
      * Tests the functionality of the `SimilarSentenceSearch` class to find sentences similar
@@ -24,7 +24,7 @@ class SimilarSentenceSearchTest {
      */
     @Test
     void testAlbertHein() {
-        SimilarSentenceSearch similarSentenceSearch = new SimilarSentenceSearch();
+        BaulieuXIIISimilaritySearch similarSentenceSearch = new BaulieuXIIISimilaritySearch();
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(
@@ -36,12 +36,14 @@ class SimilarSentenceSearchTest {
                 "Alber Heijn"
         );
 
-        int threshold = 3;
+        double threshold = 0.5;
         List<String> similarSentences = similarSentenceSearch.findSimilarSentences(searchSentence, sentences, threshold);
 
         assertThat(similarSentences)
                 .contains("Albört H ijn")
-                .contains("Alber Heijn");
+                .contains("Albert Heijn store")
+                .contains("Alber Heijn")
+                .hasSize(3);
     }
 
 }
