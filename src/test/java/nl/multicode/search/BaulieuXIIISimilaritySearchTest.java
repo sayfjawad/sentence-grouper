@@ -1,5 +1,6 @@
 package nl.multicode.search;
 
+import nl.multicode.distance.BaulieuXIIIDistance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -24,7 +25,7 @@ class BaulieuXIIISimilaritySearchTest {
      */
     @Test
     void testAlbertHein() {
-        BaulieuXIIISimilaritySearch similarSentenceSearch = new BaulieuXIIISimilaritySearch();
+        BaulieuXIIISimilaritySearch similarSentenceSearch = new BaulieuXIIISimilaritySearch(new BaulieuXIIIDistance());
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(

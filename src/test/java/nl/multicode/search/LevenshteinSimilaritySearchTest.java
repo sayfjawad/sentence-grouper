@@ -1,5 +1,6 @@
 package nl.multicode.search;
 
+import nl.multicode.distance.LevenshteinDistance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -24,7 +25,7 @@ class LevenshteinSimilaritySearchTest {
      */
     @Test
     void testAlbertHein() {
-        LevenshteinSimilaritySearch similarSentenceSearch = new LevenshteinSimilaritySearch();
+        LevenshteinSimilaritySearch similarSentenceSearch = new LevenshteinSimilaritySearch(new LevenshteinDistance());
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(

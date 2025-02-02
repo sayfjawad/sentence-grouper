@@ -3,13 +3,14 @@ package nl.multicode;
 import java.util.Arrays;
 import java.util.List;
 
+import nl.multicode.distance.LevenshteinDistance;
 import nl.multicode.search.LevenshteinSimilaritySearch;
 
 public class MainApp {
 
     public static void main(String[] args) {
 
-        LevenshteinSimilaritySearch autoGrouper = new LevenshteinSimilaritySearch();
+        LevenshteinSimilaritySearch autoGrouper = new LevenshteinSimilaritySearch(new LevenshteinDistance());
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(

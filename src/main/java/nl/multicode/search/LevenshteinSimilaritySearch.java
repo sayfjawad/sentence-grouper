@@ -1,103 +1,37 @@
 package nl.multicode.search;
 
+import nl.multicode.distance.LevenshteinDistance;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Zoekt vergelijkbare zinnen op basis van de Levenshtein-afstand.
+ */
 public class LevenshteinSimilaritySearch {
 
+    private final LevenshteinDistance levenshteinDistance;
+
     /**
-     * Finds sentences in the list that are very close to the search sentence.
+     * Constructor met een externe LevenshteinDistance-instantie (voor testbaarheid).
+     */
+    public LevenshteinSimilaritySearch(LevenshteinDistance levenshteinDistance) {
+        this.levenshteinDistance = levenshteinDistance;
+    }
+
+    /**
+     * Vindt zinnen in de lijst die vergelijkbaar zijn met de zoekzin.
      *
-     * @param searchSentence The sentence to compare against.
-     * @param sentences      The list of sentences to search through.
-     * @param threshold      The maximum allowed Levenshtein distance for a match.
-     * @return A list of sentences that are close to the search sentence.
+     * @param searchSentence De zin waarmee wordt vergeleken.
+     * @param sentences      De lijst met zinnen om door te zoeken.
+     * @param threshold      De maximale toegestane Levenshtein-afstand voor een match.
+     * @return Een lijst met vergelijkbare zinnen.
      */
     public List<String> findSimilarSentences(final String searchSentence,
                                              final List<String> sentences,
                                              final int threshold) {
         return sentences.stream()
-                .filter(sentence -> isSentenceSimilar(searchSentence, sentence, threshold))
+                .filter(sentence -> levenshteinDistance.dist(searchSentence, sentence) <= threshold)
                 .collect(Collectors.toList());
-    }
-
-    /**
-     * Checks if a sentence is similar to the search sentence based on the Levenshtein distance.
-     *
-     * @param searchSentence The sentence to compare against.
-     * @param sentence       The sentence to check.
-     * @param threshold      The maximum allowed Levenshtein distance.
-     * @return True if the sentence is similar, false otherwise.
-     */
-    private boolean isSentenceSimilar(final String searchSentence,
-                                      final String sentence,
-                                      final int threshold) {
-        final int[][] similarityScores = new int[searchSentence.length() + 1][sentence.length() + 1];
-        final int[][] initializedDistanceMatrix = initializeDistanceMatrix(searchSentence, sentence, similarityScores);
-        final int[][] filledDistanceMatrix = fillDistanceMatrixFunctionally(searchSentence, sentence, initializedDistanceMatrix, 1, 1);
-        return filledDistanceMatrix[searchSentence.length()][sentence.length()] <= threshold;
-    }
-
-    /**
-     * Initializes the distance matrix for the Levenshtein Distance calculation.
-     *
-     * @param firstString    The first string.
-     * @param secondString   The second string.
-     * @param distanceMatrix The distance matrix to initialize.
-     * @return The initialized distance matrix.
-     */
-    private int[][] initializeDistanceMatrix(final String firstString,
-                                             final String secondString,
-                                             final int[][] distanceMatrix) {
-        for (int i = 0; i <= firstString.length(); i++) {
-            distanceMatrix[i][0] = i;
-        }
-        for (int j = 0; j <= secondString.length(); j++) {
-            distanceMatrix[0][j] = j;
-        }
-        return distanceMatrix;
-    }
-
-    /**
-     * Fills the distance matrix for the Levenshtein Distance calculation using a recursive approach.
-     *
-     * @param firstString    The first string.
-     * @param secondString   The second string.
-     * @param distanceMatrix The distance matrix to fill.
-     * @param currentRow     The current row index.
-     * @param currentColumn  The current column index.
-     * @return The filled distance matrix.
-     */
-    private int[][] fillDistanceMatrixFunctionally(final String firstString,
-                                                   final String secondString,
-                                                   final int[][] distanceMatrix,
-                                                   final int currentRow,
-                                                   final int currentColumn) {
-        if (currentRow > firstString.length()) {
-            return distanceMatrix; // Base case: stop recursion
-        }
-        if (currentColumn > secondString.length()) {
-            return fillDistanceMatrixFunctionally(firstString, secondString, distanceMatrix, currentRow + 1, 1); // Move to next row
-        }
-
-        final int substitutionCost = firstString.charAt(currentRow - 1) == secondString.charAt(currentColumn - 1) ? 0 : 1;
-        final int substitutionDistance = distanceMatrix[currentRow - 1][currentColumn - 1] + substitutionCost;
-        final int deletionCost = distanceMatrix[currentRow - 1][currentColumn] + 1;
-        final int insertionCost = distanceMatrix[currentRow][currentColumn - 1] + 1;
-        distanceMatrix[currentRow][currentColumn] = min(substitutionDistance, deletionCost, insertionCost);
-
-        return fillDistanceMatrixFunctionally(firstString, secondString, distanceMatrix, currentRow, currentColumn + 1); // Move to next column
-    }
-
-    /**
-     * Helper method to find the minimum of three integers.
-     *
-     * @param substitutionDistance The first integer.
-     * @param deletionCost The second integer.
-     * @param insertionCost The third integer.
-     * @return The minimum of the three integers.
-     */
-    private int min(final int substitutionDistance, final int deletionCost, final int insertionCost) {
-        return Math.min(substitutionDistance, Math.min(deletionCost, insertionCost));
     }
 }

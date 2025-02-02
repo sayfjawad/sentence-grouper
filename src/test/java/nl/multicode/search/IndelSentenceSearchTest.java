@@ -1,5 +1,6 @@
 package nl.multicode.search;
 
+import nl.multicode.distance.IndelDistance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -24,7 +25,7 @@ class IndelSentenceSearchTest {
      */
     @Test
     void testAlbertHein() {
-        IndelSimilaritySearch similarSentenceSearch = new IndelSimilaritySearch();
+        IndelSimilaritySearch similarSentenceSearch = new IndelSimilaritySearch(new IndelDistance());
 
         String searchSentence = "Albert Heijn";
         List<String> sentences = Arrays.asList(

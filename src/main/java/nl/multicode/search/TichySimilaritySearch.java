@@ -18,16 +18,6 @@ public class TichySimilaritySearch {
     }
 
     /**
-     * Constructs a TichySimilaritySearch instance with custom cost parameters.
-     *
-     * @param moveCost the cost for a block move operation
-     * @param addCost  the cost for an add operation
-     */
-    public TichySimilaritySearch(int moveCost, int addCost) {
-        this.tichyDistance = new TichyDistance(moveCost, addCost);
-    }
-
-    /**
      * Finds sentences in the list that are similar to the search sentence
      * based on the Tichy distance.
      *
