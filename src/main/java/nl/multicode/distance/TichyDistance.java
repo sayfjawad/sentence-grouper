@@ -1,4 +1,4 @@
-package nl.multicode.search.tichy;
+package nl.multicode.distance;
 
 
 /**

@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.search.tichy.TichyDistance;
+import nl.multicode.distance.TichyDistance;
 import java.util.List;
 import java.util.stream.Collectors;
 
