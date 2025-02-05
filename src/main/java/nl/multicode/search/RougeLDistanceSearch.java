@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.RougeLDistance;
+import nl.multicode.similarity.RougeLDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

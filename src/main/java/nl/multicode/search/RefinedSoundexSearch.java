@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.RefinedSoundex;
+import nl.multicode.similarity.RefinedSoundex;
 
 import java.util.List;
 import java.util.stream.Collectors;

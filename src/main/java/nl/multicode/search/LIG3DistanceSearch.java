@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.LIG3Distance;
+import nl.multicode.similarity.LIG3Distance;
 
 import java.util.List;
 import java.util.stream.Collectors;

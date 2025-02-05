@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.ClementDistance;
+import nl.multicode.similarity.ClementDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

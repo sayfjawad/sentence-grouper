@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * CormodeLZDistance implements Cormode's LZ distance.

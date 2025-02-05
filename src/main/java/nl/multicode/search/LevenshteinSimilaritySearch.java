@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.LevenshteinDistance;
+import nl.multicode.similarity.LevenshteinDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

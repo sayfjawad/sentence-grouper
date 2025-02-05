@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * RatcliffObershelpDistance implements the Ratcliff-Obershelp similarity measure.

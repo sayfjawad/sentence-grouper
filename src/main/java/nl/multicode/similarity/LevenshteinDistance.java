@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * LevenshteinDistance calculates the edit distance between two strings.

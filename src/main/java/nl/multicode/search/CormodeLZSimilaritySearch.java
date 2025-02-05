@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.CormodeLZDistance;
+import nl.multicode.similarity.CormodeLZDistance;
 import java.util.List;
 import java.util.stream.Collectors;
 

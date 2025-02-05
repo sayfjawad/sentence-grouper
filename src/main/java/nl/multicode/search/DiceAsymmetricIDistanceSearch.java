@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.DiceAsymmetricIDistance;
+import nl.multicode.similarity.DiceAsymmetricIDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

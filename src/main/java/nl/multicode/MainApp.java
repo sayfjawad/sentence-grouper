@@ -3,7 +3,7 @@ package nl.multicode;
 import java.util.Arrays;
 import java.util.List;
 
-import nl.multicode.distance.LevenshteinDistance;
+import nl.multicode.similarity.LevenshteinDistance;
 import nl.multicode.search.LevenshteinSimilaritySearch;
 
 public class MainApp {

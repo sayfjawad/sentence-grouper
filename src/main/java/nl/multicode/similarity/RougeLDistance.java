@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * RougeLDistance implements the Rouge-L similarity measure.

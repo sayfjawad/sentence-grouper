@@ -1,55 +1,53 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * KuhnsIIIDistance implements Kuhns III correlation.
+ * ClementSimilarity implements the Clement similarity measure.
  * <p>
- * The formula follows:
+ * Clement similarity is computed as:
  * <pre>
- *     corr_KuhnsIII(X, Y) =
- *     δ(X, Y) / ((1 - |X ∩ Y| / (|X| + |Y|)) * (|X| + |Y| - |X|*|Y| / |N|))
+ *     sim_Clement(X, Y) =
+ *     (|X ∩ Y| / |X|) * (1 - |X| / |N|) +
+ *     (|(N - X) - Y| / |N - X|) * (1 - |N - X| / |N|)
  * </pre>
+ * where N is the set of all unique tokens in the comparison.
  */
-public class KuhnsIIIDistance {
+public class ClementDistance {
 
     /**
-     * Returns the Kuhns III correlation between two strings.
-     *
-     * @param src the source string
-     * @param tar the target string
-     * @return the correlation score
-     */
-    public double corr(String src, String tar) {
-        Set<Character> srcSet = tokenize(src);
-        Set<Character> tarSet = tokenize(tar);
-        Set<Character> population = new HashSet<>(srcSet);
-        population.addAll(tarSet); // N is the unique character set from both strings.
-
-        int a = intersectionSize(srcSet, tarSet);
-        int b = srcSet.size() - a;
-        int c = tarSet.size() - a;
-        int n = population.size();
-
-        double delta_ab = a - ((double) (a + b) * (a + c) / n);
-        if (delta_ab == 0) {
-            return 0.0;
-        }
-
-        double denominator = (1 - (double) a / (2 * a + b + c)) * (2 * a + b + c - ((double) (a + b) * (a + c) / n));
-        return delta_ab / denominator;
-    }
-
-    /**
-     * Returns the Kuhns III similarity between two strings.
+     * Returns the Clement similarity between two strings.
      *
      * @param src the source string
      * @param tar the target string
      * @return the similarity score in the range [0,1]
      */
     public double sim(String src, String tar) {
-        return (1.0 / 3.0 + corr(src, tar)) / (4.0 / 3.0);
+        if (src.equals(tar)) {
+            return 1.0;
+        }
+
+        Set<Character> srcSet = tokenize(src);
+        Set<Character> tarSet = tokenize(tar);
+        Set<Character> population = new HashSet<>(srcSet);
+        population.addAll(tarSet); // N is the union of both sets
+
+        int a = intersectionSize(srcSet, tarSet);
+        int b = srcSet.size() - a;
+        int c = tarSet.size() - a;
+        int d = population.size() - (a + b + c);
+        int n = population.size();
+
+        double score = 0.0;
+        if (a + b > 0) {
+            score += (a / (double) (a + b)) * (1 - (a + b) / (double) n);
+        }
+        if (c + d > 0) {
+            score += (d / (double) (c + d)) * (1 - (c + d) / (double) n);
+        }
+
+        return score;
     }
 
     /**

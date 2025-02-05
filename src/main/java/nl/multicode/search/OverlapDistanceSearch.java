@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.OverlapDistance;
+import nl.multicode.similarity.OverlapDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

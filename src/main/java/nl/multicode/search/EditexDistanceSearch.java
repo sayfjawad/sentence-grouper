@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.EditexDistance;
+import nl.multicode.similarity.EditexDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

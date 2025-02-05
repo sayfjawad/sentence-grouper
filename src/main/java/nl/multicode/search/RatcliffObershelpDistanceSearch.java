@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.RatcliffObershelpDistance;
+import nl.multicode.similarity.RatcliffObershelpDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

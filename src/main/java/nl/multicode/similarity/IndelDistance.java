@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * Implementeert de Indel Distance (alleen invoegingen en verwijderingen).

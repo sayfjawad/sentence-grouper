@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * IterativeSubString implements the Iterative-SubString (I-Sub) correlation.

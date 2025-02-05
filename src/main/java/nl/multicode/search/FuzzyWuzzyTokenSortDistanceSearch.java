@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.FuzzyWuzzyTokenSortDistance;
+import nl.multicode.similarity.FuzzyWuzzyTokenSortDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

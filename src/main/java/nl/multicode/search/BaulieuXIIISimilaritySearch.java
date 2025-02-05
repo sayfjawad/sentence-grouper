@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.BaulieuXIIIDistance;
+import nl.multicode.similarity.BaulieuXIIIDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

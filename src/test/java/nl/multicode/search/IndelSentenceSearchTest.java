@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.IndelDistance;
+import nl.multicode.similarity.IndelDistance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 import java.util.HashMap;
 import java.util.Map;

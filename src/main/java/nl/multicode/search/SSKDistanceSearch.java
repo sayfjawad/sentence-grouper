@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.SSKDistance;
+import nl.multicode.similarity.SSKDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.IndelDistance;
+import nl.multicode.similarity.IndelDistance;
 
 import java.util.List;
 import java.util.stream.Collectors;

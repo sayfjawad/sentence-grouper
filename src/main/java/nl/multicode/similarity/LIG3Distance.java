@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 /**
  * LIG3Distance implements a similarity measure based on Levenshtein and exact character matches.

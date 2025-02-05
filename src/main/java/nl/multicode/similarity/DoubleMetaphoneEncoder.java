@@ -1,4 +1,4 @@
-package nl.multicode.distance;
+package nl.multicode.similarity;
 
 import org.apache.commons.codec.language.DoubleMetaphone;
 

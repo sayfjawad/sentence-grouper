@@ -1,6 +1,6 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.DoubleMetaphoneEncoder;
+import nl.multicode.similarity.DoubleMetaphoneEncoder;
 
 import java.util.List;
 import java.util.stream.Collectors;

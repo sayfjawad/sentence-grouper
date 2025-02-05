@@ -1,6 +1,5 @@
 package nl.multicode.search;
 
-import nl.multicode.distance.EditexDistance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
